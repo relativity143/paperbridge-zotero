@@ -2,7 +2,7 @@
 
 # 纸桥翻译 · PaperBridge
 
-**在 Zotero 中，用自己的 API 翻译论文，自动保存双语 PDF。**
+**在 Zotero 中用自己的 API 翻译论文，自动保存双语 PDF**
 
 A Zotero add-on for bilingual academic PDFs, powered by local BabelDOC processing and your own OpenAI-compatible API.
 
