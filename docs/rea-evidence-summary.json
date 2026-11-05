@@ -1,0 +1,74 @@
+{
+  "tool": "REA",
+  "version": "6.5.0",
+  "source": "https://github.com/morluto/rea",
+  "target": "https://github.com/immersive-translate/zotero-immersivetranslate/releases/tag/v0.0.24",
+  "xpi_sha256": "560f507956bac4891fb50e0d4da7c8e3f6473a72c3d9d4990ec117863b6ecfc2",
+  "evidence_id": "ev_2aa268bc61871e516606055e68cf811c4b34ffb22f48fd1dc78b576d34c4aad6",
+  "evidence_sha256": "0a5bb61e39042cc73424c2ecfc442fd0cb8abbba830fadef81f4ec3ffe32f508",
+  "statistics": {
+    "relevant_files": 4,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 225651,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 2,
+    "visited_ast_nodes": 27698,
+    "findings": 1,
+    "modules": 0,
+    "parse_failures": 0
+  },
+  "selected_functions": [
+    {
+      "name": "translatePDF",
+      "node_id": "jsrg_node_269386eb05fd3d742b1ce19249abbe0633941501e53a426933455ba4a0444729",
+      "range": {
+        "start": {
+          "line": 5563,
+          "column": 2
+        },
+        "end": {
+          "line": 5606,
+          "column": 3
+        }
+      }
+    },
+    {
+      "name": "getTranslateStatus",
+      "node_id": "jsrg_node_7fbe0d5fd012628f1004ac8d3b8d72a167aaddf157bcbd0a991060859f925bc8",
+      "range": {
+        "start": {
+          "line": 6873,
+          "column": 2
+        },
+        "end": {
+          "line": 6878,
+          "column": 3
+        }
+      }
+    },
+    {
+      "name": "getTranslatePdfResult",
+      "node_id": "jsrg_node_ca7642d6eeff44ccaba8c022dfd62b016fb6abc9b5e9de21ac9b661c13f67104",
+      "range": {
+        "start": {
+          "line": 6879,
+          "column": 2
+        },
+        "end": {
+          "line": 6884,
+          "column": 3
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Caller-selected source analysis leaves 2 inventoried files outside analysis scope. Inventory identity covers the complete artifact; relationships through unselected sources remain unknown.",
+    "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
+    "Graph coverage is incomplete; unavailable facts remain explicit and must not be read as absence.",
+    "JavaScript and HTML were parsed as inert text; bundle bootstrap code was never executed.",
+    "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
+    "Static paths and relationships may remain unresolved when expressions are dynamic or obfuscated.",
+    "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code."
+  ],
+  "upstream_source_commit": "d7bf50f516788e195fb841deb36f070e48b16da6"
+}

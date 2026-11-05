@@ -1,0 +1,26 @@
+# Runtimes, caches and generated packages
+.venv/
+.tools/
+.runtime/
+.cache/
+__pycache__/
+*.py[cod]
+.DS_Store
+*.log
+dist/
+
+# Credentials and personal translation data
+.env
+.env.*
+!.env.example
+bridge.json
+jobs.json
+jobs/
+rate-limits/
+backups/
+*.pdf
+*.sqlite*
+*.db
+*.pem
+*.key
+

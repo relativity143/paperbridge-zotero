@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "纸桥翻译 PaperBridge",
+  "version": "0.2.0",
+  "description": "使用自己的 API，在 Zotero 中生成、管理并导入双语论文 PDF。",
+  "author": "PaperBridge contributors",
+  "icons": {
+    "48": "content/icon.svg",
+    "96": "content/icon.svg"
+  },
+  "applications": {
+    "zotero": {
+      "id": "paperbridge@local",
+      "strict_min_version": "8.0",
+      "strict_max_version": "10.*",
+      "update_url": "https://paperbridge.invalid/updates.json"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>纸桥翻译 · PaperBridge</title>
+  <link rel="stylesheet" href="chrome://paperbridge/content/window.css"/>
+  <script defer="defer" src="chrome://paperbridge/content/window.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="masthead">
+      <div class="brand"><img src="chrome://paperbridge/content/icon.svg" width="44" height="44" alt="纸桥"/><div><strong>纸桥翻译</strong><span>PaperBridge / 论文双语阅读</span></div></div>
+      <div class="local-label"><i></i> 本地处理 · 自选 API</div>
+    </header>
+    <nav class="tabs" aria-label="导航">
+      <button id="tab-tasks" class="tab active" aria-selected="true">翻译任务 <span id="task-count">0</span></button>
+      <button id="tab-settings" class="tab" aria-selected="false">API 与设置</button>
+    </nav>
+    <main>
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden="hidden"></div>
+      <section id="tasks-panel">
+        <div class="section-top"><div><p class="eyebrow">FROM PAPER TO UNDERSTANDING</p><h1>把语言留在桥的另一边。</h1><p class="intro">选择论文，生成双语对照 PDF。译文自动回到文献库，原始 PDF 完整保留。</p></div></div>
+        <div class="actions"><button id="add-selected" class="secondary">＋ 加入当前所选 PDF</button><button id="start-all" class="primary">开始翻译</button><button id="refresh" class="text-button">刷新任务</button></div>
+        <p id="task-summary" class="helper" role="status">可在 Zotero 中多选论文，一次加入队列。</p>
+        <p class="privacy">点击开始后，提取的论文文本会发送至你配置的 API。关闭此窗口或切换到其他应用后，翻译和自动导入都会继续。退出 Zotero 后，译文会在下次启动时自动导入。</p>
+        <div id="task-list" aria-live="polite"></div>
+        <div id="empty-state" class="empty"><div class="paper-symbol">文 <span>→</span> 译</div><h2>从一篇论文开始</h2><p>在 Zotero 中选中条目或 PDF 附件，<br/>然后右键选择“纸桥翻译：双语 PDF”。</p><button id="empty-settings" class="text-button">先配置我的 API →</button></div>
+      </section>
+      <section id="settings-panel" hidden="hidden">
+        <div class="settings-heading"><p class="eyebrow">YOUR MODEL, YOUR WORKFLOW</p><h1>连接你自己的翻译模型</h1><p class="intro">兼容 OpenAI 格式的 API；本地模型可留空密钥。</p></div>
+        <form id="settings-form">
+          <div class="settings-card">
+            <h2><span class="step">01</span> 模型连接</h2>
+            <div class="field"><label for="baseUrl">API Base URL</label><input id="baseUrl" type="url" spellcheck="false" placeholder="https://api.example.com/v1" required="required"/><small>通常填写以 /v1 结尾的接口根地址。更换地址后不会沿用其他地址的密钥。</small></div>
+            <div class="field-row"><div class="field"><label for="model">模型名称</label><input id="model" type="text" spellcheck="false" placeholder="填写服务商提供的模型名" required="required"/></div><div class="field"><label for="qps">请求速率 / QPS</label><input id="qps" type="number" min="1" max="10" step="1" required="required"/><small>同一 API 的多篇任务共享此上限。按服务商允许的速率设置。</small></div></div>
+            <div class="field"><label for="apiKey">API Key <span id="key-status" class="muted"></span></label><div class="key-row"><input id="apiKey" type="password" autocomplete="new-password" spellcheck="false" placeholder="留空保留此地址已保存的密钥"/><button type="button" id="clear-key" class="secondary">清除密钥</button></div><small>密钥保存在 Zotero 的登录凭据库，不写入插件设置或任务记录。</small></div>
+            <div class="connection-row"><button id="test-api" type="button" class="secondary">保存并测试 API</button><span id="api-status" role="status">测试只发送一句短文本，会产生少量 API 用量。</span></div>
+          </div>
+          <div class="settings-card">
+            <h2><span class="step">02</span> 翻译偏好</h2>
+            <div class="field-row"><div class="field"><label for="sourceLang">原文语言代码</label><input id="sourceLang" type="text" placeholder="en"/></div><div class="field"><label for="targetLang">目标语言代码</label><input id="targetLang" type="text" placeholder="zh"/></div></div>
+            <div class="field-row"><div class="field"><label for="pages">翻译页码</label><input id="pages" type="text" placeholder="留空全文，例如 1-3,5"/><small>建议先试译 1–2 页，确认术语和排版。</small></div><div class="field"><label for="dualMode">双语 PDF 排版</label><select id="dualMode"><option value="side-by-side">左右并排 · 原文与译文同屏</option><option value="alternating">交替页面 · 原文页后跟译文页</option></select></div></div>
+            <div class="field"><label class="checkbox-label" for="generateMono"><input id="generateMono" type="checkbox"/>额外生成单语译文 PDF（中文目标语言时为全中文版）</label><small>默认关闭，只生成双语对照 PDF。勾选后，另生成一份仅含译文的 PDF 并导入文献库。</small></div>
+            <div class="field"><label for="customPrompt">补充提示词 <span class="muted">可选</span></label><textarea id="customPrompt" rows="3" placeholder="例如：采用冷原子物理术语；将 MOT 译为磁光阱，保留公式和引用。"></textarea><small>可指定专业术语与翻译风格；不要填写密钥。</small></div>
+          </div>
+          <div class="settings-card bridge-card">
+            <h2><span class="step">03</span> 本地翻译服务</h2>
+            <p class="helper">启用后台服务后即可自动连接，无需保持启动器窗口打开。插件会自动读取本机配对文件。</p>
+            <div class="field"><label for="bridgePath">配对文件路径 <span class="muted">可选</span></label><input id="bridgePath" type="text" spellcheck="false" placeholder="默认：~/Library/Application Support/PaperBridge/bridge.json"/><small>自定义时请填写绝对路径。默认路径无需填写。</small></div>
+            <div class="connection-row"><button type="button" id="check-bridge" class="secondary">保存并检查本地服务</button><span id="bridge-status" role="status">尚未检查</span></div>
+          </div>
+          <div class="settings-footer"><span>设置仅影响新提交的任务。</span><button type="submit" id="save-settings" class="primary">保存设置</button></div>
+        </form>
+      </section>
+    </main>
+    <footer class="footer"><span>PaperBridge <span class="dot">·</span> 让阅读跨过语言</span><span>v0.2.0</span></footer>
+  </div>
+</body>
+</html>
