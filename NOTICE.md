@@ -8,4 +8,3 @@ PaperBridge is distributed under AGPL-3.0-or-later; see [LICENSE](LICENSE).
 - [REA](https://github.com/morluto/rea), `rea-agents` 6.5.0, was used for development-time analysis and is not required at runtime. A compact evidence record is in `docs/rea-evidence-summary.json`.
 
 PaperBridge is not affiliated with or endorsed by Zotero, Immersive Translate, OpenAI or the referenced projects. Names identify compatibility, dependencies and sources. Third-party dependencies retain their own licenses.
-

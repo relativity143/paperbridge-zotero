@@ -38,4 +38,3 @@ Included tests use local mock servers/workers and do not send text to external t
 - Model quality, speed, provider quotas and billing depend on the configured API.
 
 See [the reference comparison](immersive-comparison-2026-11-04.md) for its evidence boundaries.
-

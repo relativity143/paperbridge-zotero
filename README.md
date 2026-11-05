@@ -122,4 +122,3 @@ Node.js 仅用于插件测试。Python 测试使用本地模拟接口；完整�
 `zotero` · `zotero-plugin` · `paperbridge` · `pdf-translation` · `bilingual-pdf` · `babeldoc` · `openai-compatible` · `custom-api` · `academic-reading` · `paper-translation` · `translation` · `macos` · `python` · `javascript`
 
 Zotero 翻译插件、论文翻译、双语 PDF、自定义 API、本地排版、后台导入、学术阅读。
-

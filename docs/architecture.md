@@ -21,4 +21,3 @@ Provider settings remain in memory and pass to workers via standard input. The s
 The service requires a pairing token and validates Host/Origin headers. Outputs must be valid PDFs within their job directory. Import is idempotent, with task tags recovering relationships after file-organizer changes.
 
 BabelDOC 0.6.4 is pinned because its internal Python interfaces require contract/integration checks when upgrading. See [service details](../service/README.md), [verification](verification.md) and [reference comparison](immersive-comparison-2026-11-04.md).
-

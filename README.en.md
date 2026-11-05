@@ -63,4 +63,3 @@ Tests use local mock providers; full adapter tests need the pinned engine instal
 PaperBridge references the workflow of the [Immersive Translate Zotero plugin](https://github.com/immersive-translate/zotero-immersivetranslate), analyzed using [REA](https://github.com/morluto/rea), and uses [BabelDOC](https://github.com/funstory-ai/BabelDOC) 0.6.4. It is an independent project. Source uses [AGPL-3.0-or-later](LICENSE); see [NOTICE](NOTICE.md).
 
 **Keywords:** zotero, zotero-plugin, paperbridge, pdf-translation, bilingual-pdf, babeldoc, openai-compatible, custom-api, academic-reading, paper-translation, translation, macos, python, javascript.
-

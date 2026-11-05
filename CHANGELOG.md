@@ -19,4 +19,3 @@ The public repository and release bundle were prepared on 2026-11-05. Packaging 
 - **0.1.2:** extra monolingual output becomes opt-in, disabled by default.
 - **0.1.1:** repair legacy relations causing sync errors; add macOS background-service management.
 - **0.1.0:** initial add-on, local engine service, custom API settings and bilingual attachment import.
-
