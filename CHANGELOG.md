@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 — 2026-11-06
+
+- Use BabelDOC's native `NoWatermark` output mode for newly generated bilingual and optional monolingual PDFs, removing the engine's promotional footer.
+- Keep existing translated files unchanged. The fix is in the local service and works with the 0.2.0 add-on already installed; upgrading the service is required.
+- Add a regression check against the pinned engine's default-watermark behavior. Project acknowledgements and license notices remain in the repository.
+
 ## 0.2.0 — 2026-11-04
 
 - Process two PDFs concurrently by default; bounded configuration supports 1–4.

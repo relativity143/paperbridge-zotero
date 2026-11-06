@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "纸桥翻译 PaperBridge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "使用自己的 API，在 Zotero 中生成、管理并导入双语论文 PDF。",
   "author": "PaperBridge contributors",
   "icons": {

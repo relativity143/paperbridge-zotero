@@ -2,7 +2,7 @@
 
 The companion accepts authenticated requests from the Zotero add-on and runs BabelDOC in a separate process. It produces an original/translation bilingual PDF, with an optional monolingual translation PDF, using the engine's layout reconstruction. Translation quality depends on the PDF and configured model.
 
-This document describes version **0.2.0**. Update both the service and the add-on (`dist/paperbridge-0.2.0.xpi`); see the [verification record](../docs/verification.md) for validated behavior and limits. Wait for active jobs to finish before stopping and updating an existing service.
+This document describes version **0.2.1**. New PDFs use the engine's native no-watermark mode. This service fix also works with the existing 0.2.0 add-on; fresh installations can use `dist/paperbridge-0.2.1.xpi`. See the [verification record](../docs/verification.md) for validated behavior and limits. Wait for active jobs to finish before stopping and updating an existing service.
 
 ## Runtime
 

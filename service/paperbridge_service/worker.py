@@ -224,7 +224,7 @@ async def _translate(payload, emit, limiter=None):
     if version("BabelDOC") != ENGINE_VERSION:
         raise RuntimeError("Unsupported BabelDOC version")
     from babeldoc.format.pdf.high_level import async_translate, init
-    from babeldoc.format.pdf.translation_config import TranslationConfig
+    from babeldoc.format.pdf.translation_config import TranslationConfig, WatermarkOutputMode
     from babeldoc.translator.translator import OpenAITranslator, set_translate_rate_limiter
     import pymupdf
 
@@ -259,6 +259,7 @@ async def _translate(payload, emit, limiter=None):
         translator=translator, input_file=str(source), lang_in=config["sourceLang"], lang_out=config["targetLang"], doc_layout_model=None,
         pages=config["pages"] or None, output_dir=output_dir, working_dir=working_dir,
         debug=False, no_dual=False, no_mono=not config["generateMono"], qps=config["qps"], pool_max_workers=translation_workers,
+        watermark_output_mode=WatermarkOutputMode.NoWatermark,
         use_rich_pbar=False, report_interval=0.5,
         use_alternating_pages_dual=config["dualMode"] == "alternating",
         custom_system_prompt=config["customPrompt"] or None,

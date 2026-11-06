@@ -1,5 +1,13 @@
 # Verification
 
+## Version 0.2.1 — 2026-11-06
+
+- Reproduced the promotional footer through the pinned engine's default `Watermarked` configuration; the regression check failed before the fix.
+- Explicitly select BabelDOC's native `WatermarkOutputMode.NoWatermark` for all new outputs. The 33 add-on and 40 service tests pass.
+- Two real BabelDOC workers generated four PDFs (two bilingual and two optional monolingual) using a local mock provider. All four retained their expected content and contained no `BabelDOC`, `funstory.ai` or promotional footer text.
+- Visually reviewed the first bilingual and monolingual fixture pages: content was readable, with no promotional footer or clipped text. No external model requests were made; test workers and the mock server exited.
+- The fix is in the companion service and is compatible with the existing 0.2.0 add-on. Already generated PDFs are not rewritten by this update.
+
 ## Version 0.2.0
 
 Recorded on 2026-11-04: macOS Apple Silicon, Zotero 10.0.7, Python 3.12 and BabelDOC 0.6.4. These are development acceptance results, not guarantees for all documents, operating systems or providers.

@@ -243,6 +243,11 @@ class WorkerContractTests(unittest.TestCase):
             options = captured["config"]
             self.assertFalse(options["no_dual"])
             self.assertFalse(options["no_mono"])
+            self.assertEqual(
+                options.get("watermark_output_mode", config_signature.parameters["watermark_output_mode"].default),
+                translation_config.WatermarkOutputMode.NoWatermark,
+                "Generated PDFs must not contain the engine's promotional watermark",
+            )
             self.assertFalse(options["auto_extract_glossary"])
             self.assertTrue(options["auto_enable_ocr_workaround"])
             self.assertFalse(options["save_auto_extracted_glossary"])

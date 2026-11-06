@@ -4,12 +4,12 @@ Translate academic PDFs with your own OpenAI-compatible API, process layouts loc
 
 [中文说明](README.md) · [Download](https://github.com/relativity143/paperbridge-zotero/releases/latest) · [Issues](https://github.com/relativity143/paperbridge-zotero/issues)
 
-**Version 0.2.0 · macOS · Zotero 8–10 · AGPL-3.0-or-later**
+**Version 0.2.1 · macOS · Zotero 8–10 · AGPL-3.0-or-later**
 
 ## Features
 
 - Bring your own Chat Completions endpoint, model and key, including compatible local models.
-- Side-by-side or alternating-page bilingual PDFs. Extra monolingual output is optional and disabled by default.
+- Side-by-side or alternating-page bilingual PDFs. Extra monolingual output is optional and disabled by default. Newly generated PDFs omit the engine promotional watermark.
 - Two documents processed concurrently by default, eight additional queued jobs and individual cancellation.
 - Automatic import while the task window is closed; background completion does not open tabs or steal focus.
 - Author–year–title filenames, preferring the original English title except for Chinese journals or Chinese-language items.
@@ -19,7 +19,7 @@ Translate academic PDFs with your own OpenAI-compatible API, process layouts loc
 
 You need Zotero 8–10, a working `python3`/`pip`, and an OpenAI-compatible API. Apple Silicon with Zotero 10.0.7 has been validated. Windows/Linux installers are not provided.
 
-1. Download `paperbridge-0.2.0-macos.zip` from [Releases](https://github.com/relativity143/paperbridge-zotero/releases/latest) and extract it. It contains source, scripts and `dist/paperbridge-0.2.0.xpi`, but not the Python runtime or model assets.
+1. Download `paperbridge-0.2.1-macos.zip` from [Releases](https://github.com/relativity143/paperbridge-zotero/releases/latest) and extract it. It contains source, scripts and `dist/paperbridge-0.2.1.xpi`, but not the Python runtime or model assets.
 2. Run `setup.command` to download Python 3.12 and pinned dependencies, then `enable-background.command` to install the login service. You can close the terminal afterward.
 3. In Zotero, use **Tools → Plugins → gear menu → Install Add-on From File** and select the XPI in `dist/`.
 4. Open **Tools → 纸桥翻译：任务与设置** and configure your API. The plugin interface is primarily Chinese.
@@ -44,7 +44,7 @@ State and outputs live in `~/Library/Application Support/PaperBridge/`; BabelDOC
 
 ## Update and stop
 
-Update both the service and add-on. Wait until all jobs finish, run `bash stop-background.command`, then run `bash enable-background.command` from the new folder. Install the XPI through Zotero's plugin manager, rather than overwriting live profile files. Settings and outputs are preserved.
+The 0.2.1 watermark fix requires a service update and works with the existing 0.2.0 add-on. Fresh installations should use the matching full bundle. Wait until all jobs finish, run `bash stop-background.command`, then run `bash enable-background.command` from the new folder. Install the XPI through Zotero's plugin manager, rather than overwriting live profile files. Settings and outputs are preserved.
 
 The stop script also disables login startup; the enable script restores it. `start.command` is for foreground debugging while the background service is stopped. Updates are manual.
 

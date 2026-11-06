@@ -8,12 +8,12 @@ A Zotero add-on for bilingual academic PDFs, powered by local BabelDOC processin
 
 [English](README.en.md) · [下载安装包](https://github.com/relativity143/paperbridge-zotero/releases/latest) · [反馈问题](https://github.com/relativity143/paperbridge-zotero/issues)
 
-当前版本 **0.2.0**。面向 **macOS、Zotero 8–10**；已在 Apple Silicon / Zotero 10.0.7 验证。由 Zotero 插件和本地 PDF 服务组成，首次设置后服务在后台运行，不需要一直开着启动器。
+当前版本 **0.2.1**。面向 **macOS、Zotero 8–10**；已在 Apple Silicon / Zotero 10.0.7 验证。由 Zotero 插件和本地 PDF 服务组成，首次设置后服务在后台运行，不需要一直开着启动器。
 
 ## 功能
 
 - **自选模型和 API**：填写 OpenAI Chat Completions 兼容接口、模型和密钥，也支持兼容该协议的本地模型。
-- **双语 PDF**：同页左右对照或原文/译文交替页，保留原 PDF；额外单语译文默认关闭。
+- **双语 PDF**：同页左右对照或原文/译文交替页，保留原 PDF；额外单语译文默认关闭；新生成的 PDF 不附加引擎宣传水印。
 - **多篇翻译**：支持多选论文，默认同时处理两篇，另有八个排队位置；可单独取消任务。
 - **后台自动导入**：关闭任务窗口后继续查询和回存；后台完成不打开新标签、不抢焦点。
 - **自动命名**：“第一作者 - 年份 - 标题”；英文期刊优先英文原题，中文期刊或中文条目使用已有中文题名。
@@ -24,10 +24,10 @@ A Zotero add-on for bilingual academic PDFs, powered by local BabelDOC processin
 
 准备 Zotero 8–10、可用的 `python3` 与 `pip`，以及兼容的 API。首次安装需要联网下载 Python 3.12、引擎及依赖；首次翻译还可能下载布局模型、字体等资源。
 
-1. 从 [Releases](https://github.com/relativity143/paperbridge-zotero/releases/latest) 下载 **`paperbridge-0.2.0-macos.zip`** 并解压。它包含源码、安装脚本和 `dist/paperbridge-0.2.0.xpi`，不包含预下载的 Python 或模型。
+1. 从 [Releases](https://github.com/relativity143/paperbridge-zotero/releases/latest) 下载 **`paperbridge-0.2.1-macos.zip`** 并解压。它包含源码、安装脚本和 `dist/paperbridge-0.2.1.xpi`，不包含预下载的 Python 或模型。
 2. 在解压后的 `paperbridge-zotero` 文件夹中运行 **`setup.command`**，安装本地引擎。
 3. 运行 **`enable-background.command`** 安装后台服务。完成后可关闭终端；以后登录 macOS 自动启动。
-4. 在 Zotero 打开 **工具 → 插件**，从齿轮菜单选择 **从文件安装插件 / Install Add-on From File**，安装 `dist/paperbridge-0.2.0.xpi`。
+4. 在 Zotero 打开 **工具 → 插件**，从齿轮菜单选择 **从文件安装插件 / Install Add-on From File**，安装 `dist/paperbridge-0.2.1.xpi`。
 5. 打开 **工具 → 纸桥翻译：任务与设置**，填写 API 配置并保存测试。
 
 如果双击脚本无法打开，在终端进入项目文件夹运行：
@@ -71,7 +71,7 @@ API 延迟、论文长度、缓存和本机排版都会影响总耗时。两篇�
 
 ## 更新与停止
 
-**0.2.0 需要同时更新服务和插件。** 等当前翻译结束后，在新版文件夹运行：
+**从 0.2.0 升到 0.2.1，水印修复只需更新本地服务；原有 0.2.0 插件可继续使用。** 新安装请使用同版本完整包。 等当前翻译结束后，在新版文件夹运行：
 
 ```bash
 bash stop-background.command
